@@ -3,7 +3,7 @@
 Welcome to my repository dedicated to the "100 Days of Coding" challenge on LeetCode! This repository serves as a log of my daily coding submissions and is aimed at assisting fellow programmers, especially juniors, in their coding journey.
 
 ## Overview
-This repository tracks my progress as I tackle the "100 Days of Coding" challenge on LeetCode. I commit my daily solutions to various coding problems, providing explanations and optimal code implementations to aid understanding.
+This repository tracks my progress as I tackle the "100 Days of Coding" challenge on LeetCode. I commit my daily solutions to various coding problems
 
 ## Purpose
 The primary objective of this repository is twofold:
