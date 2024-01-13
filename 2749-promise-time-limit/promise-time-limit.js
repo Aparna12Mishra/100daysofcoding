@@ -3,25 +3,19 @@
  * @param {number} t
  * @return {Function}
  */
-var timeLimit = function(fn, t) {
-  return async function(...args) {
-    return new Promise((delayresolve, reject) => {
-      const timeoutId = setTimeout(() => {
-        clearTimeout(timeoutId);
-        reject("Time Limit Exceeded");
-      }, t);
+var timeLimit = function (fn, t) {
+    return function (...args) {
+        return new Promise((resolve, reject) => {
+            const originalPromise = fn(...args)
+            const timeoutPromise = new Promise((_resolve, _reject) => {
+                setTimeout(() => {_reject("Time Limit Exceeded")},t)
+            })
 
-      fn(...args)
-        .then((result) => {
-          clearTimeout(timeoutId);
-          delayresolve(result);
+            Promise.race([originalPromise, timeoutPromise])
+            .then(resolve)
+            .catch(reject)
         })
-        .catch((error) => {
-          clearTimeout(timeoutId);
-          reject(error);
-        });
-    });
-  };
+    }
 };
 
 /**
