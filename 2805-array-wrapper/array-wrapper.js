@@ -1,4 +1,3 @@
-//soln2 with function prototypes
 /**
  * @param {number[]} nums
  * @return {void}
@@ -11,14 +10,14 @@ var ArrayWrapper = function(nums) {
  * @return {number}
  */
 ArrayWrapper.prototype.valueOf = function() {
-    return [...this.nums].reduce((sum,el) => sum+el,0)
+    return this.nums.reduce((acc,val) => acc + val, 0);
 }
 
 /**
  * @return {string}
  */
 ArrayWrapper.prototype.toString = function() {
-    return `[${this.nums.join(',')}]`;
+    return `[${this.nums}]`
 }
 
 /**
