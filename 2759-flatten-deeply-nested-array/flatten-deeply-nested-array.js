@@ -1,21 +1,20 @@
 /**
- * @param {any[]} arr
+ * @param {Array} arr
  * @param {number} depth
- * @return {any[]}
+ * @return {Array}
  */
-var flat = function(arr, depth) {
-  const stack = [...arr.map(item => [item, depth])];
-  const result = [];
+var flat = function (arr, n) {
+    const res = [];
 
-  while (stack.length > 0) {
-    const [item, depth] = stack.pop();
-
-    if (Array.isArray(item) && depth > 0) {
-      stack.push(...item.map(subItem => [subItem, depth - 1]));
-    } else {
-      result.push(item);
+    function helper(arr,depth) {
+        for(const val of arr) {
+            if(typeof(val) === 'object' && depth < n) {
+                helper(val,depth + 1);
+            } else {
+                res.push(val);
+            }
+        }
+        return res;
     }
-  }
-
-  return result.reverse();
+    return helper(arr,0);
 };
