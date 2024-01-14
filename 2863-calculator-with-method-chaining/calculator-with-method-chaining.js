@@ -1,42 +1,63 @@
 class Calculator {
-  constructor(initialValue) {
-    this.result = initialValue;
-  }
-
-  add(value) {
-    this.result += value;
-    return this;
-  }
-
-  subtract(value) {
-    this.result -= value;
-    return this;
-  }
-
-  multiply(value) {
-    this.result *= value;
-    return this;
-  }
-
-  divide(value) {
-    if (value === 0) {
-      throw new Error("Division by zero is not allowed");
+    
+    /** 
+     * @param {number} value
+     */
+    constructor(value) {
+        this.value = value;
     }
-    this.result /= value;
-    return this;
-  }
-
-  power(value) {
-    this.result **= value;
-    return this;
-  }
-
-  getResult() {
-    return this.result;
-  }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    add(value){
+        this.value += value;
+        return this;
+    }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    subtract(value){
+        this.value -= value;
+        return this;
+    }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */  
+    multiply(value) {
+        this.value *= value;
+        return this;
+    }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    divide(value) {
+        if (value == 0) throw ("Division by zero is not allowed");
+        this.value /= value;
+        return this;
+    }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    power(value) {
+        // this.value = Math.pow(this.value, value);
+        this.value **= value;
+        return this;
+    }
+    
+    /** 
+     * @return {number}
+     */
+    getResult() {
+        return this.value;
+    }
 }
-
-// Example usage:
-const myCalculator = new Calculator(0); // Initialize with an initial value
-const result = myCalculator.add(5).multiply(3).divide(2).power(2).getResult();
-console.log(result); // Output: 56.25
