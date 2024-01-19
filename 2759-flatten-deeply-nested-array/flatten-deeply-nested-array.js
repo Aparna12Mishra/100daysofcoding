@@ -3,18 +3,13 @@
  * @param {number} depth
  * @return {Array}
  */
-var flat = function (arr, n) {
-    const res = [];
-
-    function helper(arr,depth) {
-        for(const val of arr) {
-            if(typeof(val) === 'object' && depth < n) {
-                helper(val,depth + 1);
-            } else {
-                res.push(val);
-            }
+var flat = function (arr, n, tempArray = [], currentCycle = 0) {
+    for (let index = 0; index < arr.length; index++) {
+        if (Array.isArray(arr[index]) && currentCycle < n) {
+            flat(arr[index], n, tempArray, currentCycle + 1)
+        } else {
+            tempArray.push(arr[index])
         }
-        return res;
     }
-    return helper(arr,0);
+    return tempArray
 };
